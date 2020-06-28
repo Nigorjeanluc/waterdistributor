@@ -72,35 +72,46 @@
           <div class="col-md-4"></div>
           <div class="col-md-4 col-xs-12 col-sm-12">
               <h2>Order Now</h2>
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <?php
+                    $yes=isset($_REQUEST['yes']);
+                    if($yes){
+                        echo'
+						<br />
+                        <div class="alert alert-success alert-dismissable text-center">
+                            <button style="font-size:20px" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5 style="font-size:20px">Your order has been successfully sent.</h5>
+                        </div>';
+                    }
+                ?>
+              <form action="controllers/ordering.php" method="post" role="form" class="php-email-form">
                 <div class="form-group">
                   <h6>CustomerID:</h6>
-                  <input type="text" class="form-control" name="customerID" placeholder="Enter customerID here" data-msg="Please enter your email here" />
+                  <input type="text" class="form-control" name="customerID" placeholder="Enter customerID here" required />
                 </div>
                 <div class="form-group">
                   <h6>Customer Name:</h6>
-                  <input type="text" class="form-control" name="customerName" placeholder="Enter your name here" data-msg="Please enter your email here" />
+                  <input type="text" class="form-control" name="customerName" placeholder="Enter your name here" required />
                 </div>
                 <div class="form-group">
                   <h6>Address:</h6>
-                  <input type="text" class="form-control" name="address" placeholder="Enter Address here" data-msg="Please enter your email here" />
+                  <input type="text" class="form-control" name="address" placeholder="Enter Address here" required />
                 </div>
                 <div class="form-group">
                   <h6>Phone Number:</h6>
-                  <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number here" data-msg="Please enter your email here" />
+                  <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number here" required />
                 </div>
                 <div class="form-group">
                   <h6>Quantity:</h6>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select name="quantity" class="form-control">
+                    <?php
+                        for($i =1; $i <= 100; $i++) {
+                            echo "<option>".$i." litle(s)</option>";
+                        }
+                    ?>
                   </select>
                 </div>
                 <div class="text-center">
-                    <button class="login-btn" type="submit">Submit</button>
+                    <button class="login-btn" name="orders" type="submit">Submit</button>
                 </div>
               </form>
           </div>
@@ -120,7 +131,7 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
   <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
   <script src="assets/vendor/counterup/counterup.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>

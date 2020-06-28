@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,29 +74,37 @@
         <div class="row">
           <div class="col-md-4"></div>
           <div class="col-md-4 col-xs-12 col-sm-12">
+              <?php
+                  $yes=isset($_REQUEST['yes']);
+                  if($yes){
+                  echo'
+                  <div align="center" class="box">
+                    <p>Wrong username or password, retry again or return <a href="index.php">Home</a>.</p>
+                  </div>
+                  ';
+                  }
+                  $no=isset($_REQUEST['no']);
+                  if($no){
+                  unset($_SESSION['admin']);
+                  echo'
+                  <div align="center" class="box">
+                      <p>Thanks for your participation login again or return <a href="index.php">Home</a>.</p>
+                  </div>
+                  ';
+                }
+              ?>
               <h2>Admin Login</h2>
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <form action="controllers/loginAdmin.php" method="post" role="form" class="php-email-form">
                 <div class="form-group">
                   <h6>Username:</h6>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Enter username here" data-msg="Please enter your email here" />
-                  <div class="validate"></div>
+                  <input type="text" class="form-control" name="username" id="username" placeholder="Enter username here" required/>
                 </div>
                 <div class="form-group">
                   <h6>Password:</h6>
-                  <input type="password" class="form-control" name="password" placeholder="Enter password here" data-rule="minlen:4" data-msg="Password" />
-                  <div class="validate"></div>
+                  <input type="password" class="form-control" name="password" placeholder="Enter password here" required/>
                 </div>
-                <!-- <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validate"></div>
-                </div> -->
-                <!-- <div class="mb-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div> -->
                 <div class="text-center">
-                    <button class="login-btn" type="submit">Submit</button>
+                    <button class="login-btn" name="submit" type="submit">Submit</button>
                 </div>
               </form>
           </div>
@@ -113,7 +124,7 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
   <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
   <script src="assets/vendor/counterup/counterup.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
