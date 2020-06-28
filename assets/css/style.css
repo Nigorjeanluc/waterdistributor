@@ -1543,3 +1543,11 @@ section {
   background: #ffce3a;
   text-decoration: none;
 }
+
+.login-btn {
+  border: 1px solid black;
+  border-radius: 10px;
+  background: #ffce3a;
+  padding: 10px;
+  width: 100%;
+}
