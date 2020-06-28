@@ -79,15 +79,15 @@
                 </div>
                 <div class="form-group">
                   <h6>Customer Name:</h6>
-                  <input type="text" class="form-control" name="customerName" placeholder="Enter customerID here" data-msg="Please enter your email here" />
+                  <input type="text" class="form-control" name="customerName" placeholder="Enter your name here" data-msg="Please enter your email here" />
                 </div>
                 <div class="form-group">
                   <h6>Address:</h6>
-                  <input type="text" class="form-control" name="address" placeholder="Enter customerID here" data-msg="Please enter your email here" />
+                  <input type="text" class="form-control" name="address" placeholder="Enter Address here" data-msg="Please enter your email here" />
                 </div>
                 <div class="form-group">
                   <h6>Phone Number:</h6>
-                  <input type="text" class="form-control" name="phone" placeholder="Enter customerID here" data-msg="Please enter your email here" />
+                  <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number here" data-msg="Please enter your email here" />
                 </div>
                 <div class="form-group">
                   <h6>Quantity:</h6>
