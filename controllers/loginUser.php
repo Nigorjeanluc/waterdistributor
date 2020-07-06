@@ -4,7 +4,7 @@ include("connection.php");
 	if(isset($_POST['submit'])){
 		$name = htmlentities($_POST['name']);
         $password = htmlentities($_POST['password']);
-		$sql= "SELECT * FROM admin WHERE name='$name' AND password='$password'";
+		$sql= "SELECT * FROM customers WHERE name='$name' AND password='$password'";
 		$res= mysqli_query($dbcon,$sql);
 		$row= mysqli_fetch_array($res);
 		if(isset($row)){

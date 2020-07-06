@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if(!isset($_SESSION['admin'])){
+      echo "<meta http-equiv='refresh' content='0;url=../login.php'>";
+    }
     include('../controllers/connection.php');
 ?>
 <!DOCTYPE html>
@@ -58,52 +62,54 @@
 
           <!-- Content Row -->
           <div class="row">
-              
-          <div class="card shadow mb-12">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">All customers</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>CustomerID</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Date</th>
-                      <th>Control</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-                    $sql = mysqli_query($dbcon,"SELECT * FROM customers ORDER BY ID DESC");
-                    while($row = mysqli_fetch_array($sql)){
-                        echo'
-                        <tr>
-                          <td>'.$row['name'].'</td>
-                          <td>'.$row['customerID'].'</td>
-                          <td>'.$row['address'].'</td>
-                          <td>'.$row['date'].'</td>
-                          <td>
-                            <p>
-                                <button class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></button>
-                                <button class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
-                            </p>
-                            <p>
-                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                            </p>
-                          </td>
-                        </tr>
-                        ';
-                    }
-                    ?>
-                  </tbody>
-                </table>
+            <div class="col-md-12">
+              <div class="card shadow mb-12">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">All customers</h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>CustomerID</th>
+                        <th>Address</th>
+                        <th>Date</th>
+                        <th>Control</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                      $sql = mysqli_query($dbcon,"SELECT * FROM customers ORDER BY ID DESC");
+                      while($row = mysqli_fetch_array($sql)){
+                          echo'
+                          <tr>
+                            <td>'.$row['id'].'</td>
+                            <td>'.$row['name'].'</td>
+                            <td>'.$row['customerID'].'</td>
+                            <td>'.$row['address'].'</td>
+                            <td>'.$row['date'].'</td>
+                            <td>
+                              <p>
+                                  <button class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></button>
+                                  <button class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
+                              </p>
+                              <p>
+                                  <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                              </p>
+                            </td>
+                          </tr>
+                          ';
+                      }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
+            </div>
           </div>
 
           <!-- Content Row -->
@@ -134,23 +140,9 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php
+    include('logout.php');
+  ?>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -162,12 +154,12 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

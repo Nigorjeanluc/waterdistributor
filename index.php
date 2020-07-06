@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -661,7 +664,7 @@
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-      <div class="container">
+      <div id="here" class="container">
 
         <div class="section-title">
           <h2>Contact</h2>
@@ -699,7 +702,26 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <?php
+                  $yes=isset($_REQUEST['yes']);
+                  if($yes){
+                    echo'
+                    <div align="center" class="box">
+                      <p>Thanks you, your message was received successfully</p>
+                    </div>
+                    ';
+                    }
+                    $no=isset($_REQUEST['no']);
+                    if($no){
+                    unset($_SESSION['admin']);
+                    echo'
+                    <div align="center" class="box">
+                        <p>Thanks for your participation login again or return <a href="index.php">Home</a>.</p>
+                    </div>
+                    ';
+                  }
+              ?>
+            <form action="controllers/contact.php" method="post" role="form" class="php-email-form">
               <div class="form-row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -723,7 +745,7 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button name="contact" type="submit">Send Message</button></div>
             </form>
           </div>
 

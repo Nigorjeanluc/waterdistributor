@@ -85,19 +85,20 @@
                   }
                   $no=isset($_REQUEST['no']);
                   if($no){
-                  unset($_SESSION['admin']);
-                  echo'
-                  <div align="center" class="box">
-                      <p>Thanks for your participation login again or return <a href="index.php">Home</a>.</p>
-                  </div>
-                  ';
+                  unset($_SESSION['user']);
+                  echo "<meta http-equiv='refresh' content='0;url=index.php'>";
+                  // echo'
+                  // <div align="center" class="box">
+                  //     <p>Thanks for your participation login again or return <a href="index.php">Home</a>.</p>
+                  // </div>
+                  // ';
                 }
               ?>
-              <h2>Admin Login</h2>
-              <form action="controllers/loginAdmin.php" method="post" role="form" class="php-email-form">
+              <h2>User Login</h2>
+              <form action="controllers/loginUser.php" method="post" role="form" class="php-email-form">
                 <div class="form-group">
                   <h6>Username:</h6>
-                  <input type="text" class="form-control" name="username" id="username" placeholder="Enter username here" required/>
+                  <input type="text" class="form-control" name="name" id="username" placeholder="Enter username here" required/>
                 </div>
                 <div class="form-group">
                   <h6>Password:</h6>

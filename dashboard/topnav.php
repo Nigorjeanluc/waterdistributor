@@ -1,5 +1,6 @@
 <?php
     include('../controllers/connection.php');
+    $name=$_SESSION['admin'];
 ?>
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -48,7 +49,15 @@
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-danger badge-counter">
+                  <?php
+                    $sqli="SELECT SUM(counter) FROM orders";
+                    $result=mysqli_query($dbcon,$sqli);
+                    while ($row=mysqli_fetch_assoc($result)) {
+                      echo $row['SUM(counter)'];
+                    }
+                  ?>
+                </span>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
@@ -56,7 +65,7 @@
                   Recent orders
                 </h6>
                 <?php
-                    $sql = mysqli_query($dbcon,"SELECT * FROM orders ORDER BY ID DESC LIMIT 0,10");
+                    $sql = mysqli_query($dbcon,"SELECT * FROM orders WHERE processed = 0 ORDER BY ID DESC LIMIT 0,10");
                     while($row = mysqli_fetch_array($sql)){
                         echo'
                         <a class="dropdown-item d-flex align-items-center" href="#">
@@ -137,22 +146,14 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $name; ?></span>
+                <img class="img-profile rounded-circle" src="img/avatar.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
