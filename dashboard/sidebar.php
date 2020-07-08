@@ -39,12 +39,6 @@
           </div>
         </div>
       </li>
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Customers</span></a>
-      </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">

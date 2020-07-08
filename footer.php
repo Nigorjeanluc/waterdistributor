@@ -34,7 +34,7 @@
           &copy; Copyright <strong><span>Water Distribution App</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-          Designed by <a href="#">GammaGeeks</a>
+          Login as <a href="dashboard/login.php">Admin</a> or <a href="dashboard/loginDist.php"> Distributor</a>
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">

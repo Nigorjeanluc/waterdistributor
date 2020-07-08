@@ -39,7 +39,7 @@
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Login as Admin!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Login as Distributor!</h1>
                   </div>
                   <?php
                       $yes=isset($_REQUEST['yes']);
@@ -52,8 +52,8 @@
                       }
                       $no=isset($_REQUEST['no']);
                       if($no){
-                        if(isset($_SESSION['admin'])) {
-                          unset($_SESSION['admin']);
+                        if(isset($_SESSION['dist'])) {
+                          unset($_SESSION['dist']);
                           echo "<meta http-equiv='refresh' content='0;url=../index.php'>";
                         } else {
                           echo'
@@ -64,7 +64,7 @@
                         }
                     }
                   ?>
-                  <form action="../controllers/loginDist.php" method="post" class="user">
+                  <form action="../controllers/loginAdmin.php" method="post" class="user">
                     <div class="form-group">
                       <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username..." required>
                     </div>

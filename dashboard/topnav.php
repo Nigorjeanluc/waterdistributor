@@ -49,15 +49,16 @@
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">
+                <!-- <span class="badge badge-danger badge-counter">
                   <?php
-                    $sqli="SELECT SUM(counter) FROM orders";
-                    $result=mysqli_query($dbcon,$sqli);
-                    while ($row=mysqli_fetch_assoc($result)) {
-                      echo $row['SUM(counter)'];
-                    }
+                    // $sqli="SELECT SUM(counter) FROM orders";
+                    // $result=mysqli_query($dbcon,$sqli);
+                    // echo $result;
+                    // while ($row=mysqli_fetch_assoc($result)) {
+                    //   echo $row['SUM(counter)'];
+                    // }
                   ?>
-                </span>
+                </span> -->
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
