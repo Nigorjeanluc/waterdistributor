@@ -13,7 +13,6 @@
         $sourceArray = stringCopact3($customerId,$customerName,$address).",".stringCopact3($phone,$quantity, 0).",".stringCopact1(false);
         $query = insertDatas($table,$destinationArray,$sourceArray);
         $res = mysqli_query($dbcon,$query);
-        echo $query;
         if($res){
             echo "<meta http-equiv='refresh' content='0;url=../order.php?yes=0#here'>";
         }else{

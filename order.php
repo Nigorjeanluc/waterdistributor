@@ -89,11 +89,23 @@
               <form action="controllers/ordering.php" method="post" role="form" class="php-email-form">
                 <div class="form-group">
                   <h6>CustomerID:</h6>
-                  <input type="text" class="form-control" name="customerID" placeholder="Enter customerID here" required />
+                  <?php
+                    if(isset($_SESSION['user_id'])) {
+                      echo '<input type="text" class="form-control" name="customerID" value="'.$_SESSION['user_id'].'" disabled required/>';
+                    } else {
+                      echo '<input type="text" class="form-control" name="customerID" placeholder="Enter customerID here" required />';
+                    }
+                  ?>
                 </div>
                 <div class="form-group">
                   <h6>Customer Name:</h6>
-                  <input type="text" class="form-control" name="customerName" placeholder="Enter your name here" required />
+                  <?php
+                    if(isset($_SESSION['user'])) {
+                      echo '<input type="text" class="form-control" name="customerName" value="'.$_SESSION['user'].'" disabled required/>';
+                    } else {
+                      echo '<input type="text" class="form-control" name="customerName" placeholder="Enter your name here" required />';
+                    }
+                  ?>
                 </div>
                 <div class="form-group">
                   <h6>Address:</h6>
@@ -106,11 +118,9 @@
                 <div class="form-group">
                   <h6>Quantity:</h6>
                   <select name="quantity" class="form-control">
-                    <?php
-                        for($i =1; $i <= 100; $i++) {
-                            echo "<option>".$i." litle(s)</option>";
-                        }
-                    ?>
+                    <option value="20">20L tap refill</option>
+                    <option value="20">20L jerrycan refill</option>
+                    <option value="18.9">18.9L tap refill</option>
                   </select>
                 </div>
                 <div class="text-center">

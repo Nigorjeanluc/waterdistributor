@@ -254,7 +254,7 @@
     </section><!-- End Cta Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+    <!-- <section id="testimonials" class="testimonials">
       <div class="container">
 
         <div class="section-title">
@@ -322,7 +322,7 @@
         </div>
 
       </div>
-    </section>
+    </section> -->
     <!-- End Testimonials Section -->
 
     <!-- ======= Portfolio Section ======= -->
@@ -444,7 +444,7 @@
     <!-- End Portfolio Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
+    <!-- <section id="team" class="team section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -511,7 +511,8 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section> -->
+    <!-- End Team Section -->
 
     <!-- ======= Pricing Section ======= -->
     <!-- <section id="pricing" class="pricing">

@@ -11,7 +11,7 @@ include("connection.php");
 			$_SESSION['dist']=$row['username'];
 			echo "<meta http-equiv='refresh' content='0;url=../dashboard/home.php'>";
 		}else{
-			echo "<meta http-equiv='refresh' content='0;url=../loginDist.php?yes=0'>";
+			echo "<meta http-equiv='refresh' content='0;url=../dashboard/loginDist.php?yes=0'>";
 		}
 	}
 ?>

@@ -34,7 +34,13 @@
           &copy; Copyright <strong><span>Water Distribution App</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-          Login as <a href="dashboard/login.php">Admin</a> or <a href="dashboard/loginDist.php"> Distributor</a>
+        <?php
+          if(isset($_SESSION['user_id']) || isset($_SESSION['admin'])) {
+            echo 'Login as <a href="dashboard/">Admin</a> or <a href="dashboard/home.php"> Distributor</a>';
+          } else {
+            echo 'Login as <a href="dashboard/login.php">Admin</a> or <a href="dashboard/loginDist.php"> Distributor</a>';
+          }
+        ?>
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">

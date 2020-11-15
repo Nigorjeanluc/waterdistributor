@@ -1,9 +1,8 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['dist'])){
-      echo "<meta http-equiv='refresh' content='0;url=../login.php'>";
-    }
-    include('../controllers/connection.php');
+  session_start();
+  if(!isset($_SESSION['admin'])){
+    echo "<meta http-equiv='refresh' content='0;url=../login.php'>";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Customers</title>
+  <title>All Distributors</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,7 +23,6 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -35,7 +33,7 @@
 
     <!-- Sidebar -->
     <?php
-      include('sidebar1.php');
+      include('sidebar.php');
     ?>
     <!-- End of Sidebar -->
 
@@ -47,7 +45,7 @@
 
         <!-- Topbar -->
         <?php
-          include('topnav1.php')
+          include('topnav.php')
         ?>
         <!-- End of Topbar -->
 
@@ -56,49 +54,43 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Customers</h1>
+            <h1 class="h3 mb-0 text-gray-800">All Distributors</h1>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
-          <!-- Content Row -->
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card shadow mb-12">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">All customers</h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">All distributors table</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Address</th>
+                      <th>Phone Number</th>
+                      <th>Starting date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     <?php
-                      $sql = mysqli_query($dbcon,"SELECT * FROM customers ORDER BY ID DESC");
+                      $sql = mysqli_query($dbcon,"SELECT * FROM distributors ORDER BY ID DESC");
                       while($row = mysqli_fetch_array($sql)){
                           echo'
                           <tr>
                             <td>'.$row['id'].'</td>
-                            <td>'.$row['name'].'</td>
-                            <td>'.$row['phoneNumber'].'</td>
+                            <td>'.$row['username'].'</td>
                             <td>'.$row['address'].'</td>
                             <td>'.$row['date'].'</td>
                           </tr>
                           ';
                       }
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
+                    ?>
+                  </tbody>
+                </table>
               </div>
-            </div>
             </div>
           </div>
 
@@ -144,12 +136,12 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

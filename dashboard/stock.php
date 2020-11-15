@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Orders</title>
+  <title>Stock</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -56,16 +56,36 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Orders</h1>
+            <h1 class="h3 mb-0 text-gray-800">Stock</h1>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
           <!-- Content Row -->
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="card shadow mb-12">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Order to Supplier</h6>
+                </div>
+                <div class="card-body">
+                  <form action="../controllers/loginAdmin.php" method="post" class="user">
+                    <div class="form-group">
+                      <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username..." required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">
+                      Login
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
               <div class="card shadow mb-12">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">All customers</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Stock</h6>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -100,7 +120,7 @@
                               <span class="text">Order Processed</span>
                             </a>
                           ' : '
-                            <a href="#" data-toggle="modal" data-target="#approveOrder" class="btn btn-danger btn-icon-split">
+                            <a href="#" class="btn btn-danger btn-icon-split">
                               <span class="icon text-white-50">
                                 <i class="fas fa-times"></i>
                               </span>
@@ -149,7 +169,6 @@
   <!-- Logout Modal-->
   <?php
     include('logout.php');
-    include('proceedOrder.php');
   ?>
 
   <!-- Bootstrap core JavaScript-->

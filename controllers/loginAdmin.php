@@ -11,7 +11,7 @@ include("connection.php");
 			$_SESSION['admin']=$row['username'];
 			echo "<meta http-equiv='refresh' content='0;url=../dashboard/'>";
 		}else{
-			echo "<meta http-equiv='refresh' content='0;url=../login.php?yes=0'>";
+			echo "<meta http-equiv='refresh' content='0;url=../dashboard/login.php?yes=0'>";
 		}
 	}
 ?>

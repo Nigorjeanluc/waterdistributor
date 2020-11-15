@@ -9,6 +9,7 @@ include("connection.php");
 		$row= mysqli_fetch_array($res);
 		if(isset($row)){
 			$_SESSION['user']=$row['name'];
+			$_SESSION['user_id']=$row['id'];
 			echo "<meta http-equiv='refresh' content='0;url=../index.php'>";
 		}else{
 			echo "<meta http-equiv='refresh' content='0;url=../login.php?yes=0'>";

@@ -86,6 +86,7 @@
                   $no=isset($_REQUEST['no']);
                   if($no){
                   unset($_SESSION['user']);
+                  unset($_SESSION['user_id']);
                   echo "<meta http-equiv='refresh' content='0;url=index.php'>";
                   // echo'
                   // <div align="center" class="box">

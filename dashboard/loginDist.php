@@ -12,7 +12,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin - Login</title>
+  <title>Distributor - Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -64,7 +64,7 @@
                         }
                     }
                   ?>
-                  <form action="../controllers/loginAdmin.php" method="post" class="user">
+                  <form action="../controllers/loginDist.php" method="post" class="user">
                     <div class="form-group">
                       <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username..." required>
                     </div>
