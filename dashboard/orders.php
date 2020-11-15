@@ -86,6 +86,32 @@
                     $sql = mysqli_query($dbcon,"SELECT * FROM orders ORDER BY date DESC");
                     while($row = mysqli_fetch_array($sql)){
                         echo'
+                        <div class="modal fade" id="approveOrder'.$row['id'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Ready to Approve order?</h5>
+                              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">Approve approve the order.</div>
+                            <div class="modal-footer">
+                            <form action="../controllers/approveOrder.php" method="post">
+                              <input hidden name="id" value="'.$row['id'].'"/>
+                              <input hidden name="customerName" value="'.$row['customerName'].'"/>
+                              <input hidden name="phone" value="'.$row['phoneNumber'].'"/>
+                              <input hidden name="address" value="'.$row['address'].'"/>
+                              <input hidden name="quantity" value="'.$row['quantity'].'"/>
+                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                              <button name="approve" type="submit" class="btn btn-primary" href="">Approve</button>
+                            </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        ';
+                        echo'
                         <tr>
                           <td>'.$row['id'].'</td>
                           <td>'.$row['customerName'].'</td>
@@ -100,7 +126,7 @@
                               <span class="text">Order Processed</span>
                             </a>
                           ' : '
-                            <a href="#" data-toggle="modal" data-target="#approveOrder" class="btn btn-danger btn-icon-split">
+                            <a href="#" data-toggle="modal" data-target="#approveOrder'.$row['id'].'" class="btn btn-danger btn-icon-split">
                               <span class="icon text-white-50">
                                 <i class="fas fa-times"></i>
                               </span>
@@ -149,7 +175,6 @@
   <!-- Logout Modal-->
   <?php
     include('logout.php');
-    include('proceedOrder.php');
   ?>
 
   <!-- Bootstrap core JavaScript-->

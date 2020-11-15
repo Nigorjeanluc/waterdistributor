@@ -49,18 +49,18 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="sales.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Sales Report</span></a>
       </li>
       
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Stock</span></a>
-      </li>
+      </li> -->
 
       <!-- Divider -->
       <!-- <hr class="sidebar-divider"> -->
