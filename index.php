@@ -664,7 +664,7 @@
     <!-- End Frequently Asked Questions Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <!-- <section id="contact" class="contact">
       <div id="here" class="container">
 
         <div class="section-title">
@@ -714,7 +714,7 @@
                     }
                     $no=isset($_REQUEST['no']);
                     if($no){
-                    unset($_SESSION['admin']);
+                    unset($_SESSION['supplier']);
                     echo'
                     <div align="center" class="box">
                         <p>Thanks for your participation login again or return <a href="index.php">Home</a>.</p>
@@ -753,7 +753,8 @@
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section> -->
+    <!-- End Contact Section -->
 
   </main><!-- End #main -->
 

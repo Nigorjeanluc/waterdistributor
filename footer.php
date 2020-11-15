@@ -35,20 +35,20 @@
         </div>
         <div class="credits">
         <?php
-          if(isset($_SESSION['user_id']) || isset($_SESSION['admin'])) {
-            echo 'Login as <a href="dashboard/">Admin</a> or <a href="dashboard/home.php"> Distributor</a>';
+          if(isset($_SESSION['user_id']) || isset($_SESSION['supplier'])) {
+            echo 'Login as <a href="dashboard/">Supplier</a> or <a href="dashboard/home.php"> Distributor</a>';
           } else {
-            echo 'Login as <a href="dashboard/login.php">Admin</a> or <a href="dashboard/loginDist.php"> Distributor</a>';
+            echo 'Login as <a href="dashboard/login.php">Supplier</a> or <a href="dashboard/loginDist.php"> Distributor</a>';
           }
         ?>
         </div>
       </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+      </div> -->
     </div>
 </footer><!-- End Footer -->

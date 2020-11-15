@@ -12,7 +12,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin - Login</title>
+  <title>Supplier - Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,7 +39,7 @@
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Login as Admin!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Login as Supplier!</h1>
                   </div>
                   <?php
                       $yes=isset($_REQUEST['yes']);
@@ -52,8 +52,8 @@
                       }
                       $no=isset($_REQUEST['no']);
                       if($no){
-                        if(isset($_SESSION['admin'])) {
-                          unset($_SESSION['admin']);
+                        if(isset($_SESSION['supplier'])) {
+                          unset($_SESSION['supplier']);
                           echo "<meta http-equiv='refresh' content='0;url=../index.php'>";
                         } else {
                           echo'
