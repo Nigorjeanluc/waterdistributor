@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['dist'])){
+    if(!isset($_SESSION['supplier'])){
       echo "<meta http-equiv='refresh' content='0;url=../login.php'>";
     }
     include('../controllers/connection.php');
@@ -35,7 +35,7 @@
 
     <!-- Sidebar -->
     <?php
-      include('sidebar1.php');
+      include('sidebar.php');
     ?>
     <!-- End of Sidebar -->
 
@@ -47,7 +47,7 @@
 
         <!-- Topbar -->
         <?php
-          include('topnav1.php')
+          include('topnav.php')
         ?>
         <!-- End of Topbar -->
 
@@ -85,7 +85,7 @@
                   </thead>
                   <tbody>
                   <?php
-                    $sql = mysqli_query($dbcon,"SELECT * FROM view distributor ORDER BY date DESC");
+                    $sql = mysqli_query($dbcon,"SELECT * FROM vieworder ORDER BY date DESC");
                     while($row = mysqli_fetch_array($sql)){
                         echo'
                         <div class="modal fade" id="approveOrder'.$row['id'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,16 +94,16 @@
                             <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLabel">Ready to Approve order?</h5>
                               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
+                                <span aria-hidden="true">X</span>
                               </button>
                             </div>
-                            <div class="modal-body">Approve approve the order.</div>
+                            <div class="modal-body">Approve the order.</div>
                             <div class="modal-footer">
-                            <form action="../controllers/approveOrder.php" method="post">
-                              <input hidden name="distributor id" value="'.$row['distributor id'].'"/>
-                              <input hidden name="ditributor Name" value="'.$row['ditributor Name'].'"/>
+                            <form action="../controllers/approveDistOrder.php" method="post">
+                              <input hidden name="id" value="'.$row['id'].'"/>
+                              <input hidden name="distributor_name" value="'.$row['distributor_name'].'"/>
 							  
-                              <input hidden name="Phone Number" value="'.$row['phoneNumber'].'"/>
+                              <input hidden name="phone_number" value="'.$row['phone_number'].'"/>
                               <input hidden name="Address" value="'.$row['Address'].'"/>
                               <input hidden name="quantity" value="'.$row['quantity'].'"/>
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -116,9 +116,9 @@
                         ';
                         echo'
                         <tr>
-                          <td>'.$row['distributor id'].'</td>
-                          <td>'.$row['distributor Name'].'</td>
-                          <td>'.$row['Phone Number'].'</td>
+                          <td>'.$row['id'].'</td>
+                          <td>'.$row['distributor_name'].'</td>
+                          <td>'.$row['phone_number'].'</td>
                           <td>'.$row['Address'].'</td>
                           <td>'.$row['quantity'].' litre(s)</td>
                           <td>'.($row['processed'] == true ? '
@@ -129,7 +129,7 @@
                               <span class="text">Order Processed</span>
                             </a>
                           ' : '
-                            <a href="#" data-toggle="modal" data-target="#approveOrder'.$row['distributor id'].'" class="btn btn-danger btn-icon-split">
+                            <a href="#" data-toggle="modal" data-target="#approveOrder'.$row['id'].'" class="btn btn-danger btn-icon-split">
                               <span class="icon text-white-50">
                                 <i class="fas fa-times"></i>
                               </span>

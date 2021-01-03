@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-copy"></i>
         </div>
@@ -34,33 +34,33 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Distributor related actions:</h6>
-            <a class="collapse-item" href="addDist.php">Add Distrubitors</a>
-            <a class="collapse-item" href="allDist.php">All Distributors</a>
+            <a class="collapse-item" href="allDist.php">All Distrubitors</a>
+            <a class="collapse-item" href="distributorOrders.php">All Distributors Order</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Transactions</span></a>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Sales Report</span></a>
-      </li>
+      </li> -->
       
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Stock</span></a>
-      </li>
+      </li> -->
 
       <!-- Divider -->
       <!-- <hr class="sidebar-divider"> -->

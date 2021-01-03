@@ -31,7 +31,7 @@
 
     function updateDatas( $table,$data_to_inserts,$table_col,$target)
     { 
-        $sql= "UPDATE ".$table." SET " .$data_to_inserts."  WHERE ".$table_col." = '".$target."'";
+        $sql= "UPDATE ".$table." SET ".$data_to_inserts." WHERE ".$table_col." = '".$target."'";
         return $sql;
     }
 

@@ -62,87 +62,216 @@
 
           <!-- Content Row -->
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="card shadow mb-12">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Order to Supplier</h6>
                 </div>
                 <div class="card-body">
-                  <form action="../controllers/loginAdmin.php" method="post" class="user">
+                  <h2>Distributor's order</h2>
+                  <?php
+                    $yes=isset($_REQUEST['yes']);
+                    if($yes){
+                      echo'
+                        <br />
+                          <div class="alert alert-success alert-dismissable text-center">
+                              <button style="font-size:20px" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                              <h5 style="font-size:20px">Your order has been successfully sent.</h5>
+                          </div>';
+                    }
+                  ?>
+                  <form action="../controllers/salam.php" method="post" role="form" class="php-email-form">
                     <div class="form-group">
-                      <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username..." required>
+                      <?php
+                        if(isset($_SESSION['dist'])) {
+                          echo '<input hidden class="form-control" name="distributor_name" value="'.$_SESSION['dist'].'" required/>';
+                        } else {
+                          echo '<h6>Distributor Name:</h6>';
+                          echo '<input type="text" class="form-control" name="distributor_name" placeholder="Enter your name here" required />';
+                        }
+                      ?>
                     </div>
                     <div class="form-group">
-                      <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <h6>Address:</h6>
+                      <input type="text" class="form-control" name="Address" placeholder="Enter Address here" required />
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </button>
+                    <div class="form-group">
+                      <h6>Phone Number:</h6>
+                      <input type="text" class="form-control" name="phone_number" placeholder="Enter Phone Number here" required />
+                    </div>
+                    <div class="form-group">
+                        <h6>Quantity:</h6>
+                        <select name="quantity" class="form-control">
+                          <?php
+                            for($i = 1; $i <= 100; $i++) {
+                              echo "<option value='$i'>$i litre(s)</option>";
+                            }
+                          ?>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                          <button class="btn btn-md" name="orders" type="submit">Submit</button>
+                    </div>
                   </form>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
               <div class="card shadow mb-12">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Stock</h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>CustomerName</th>
-                      <th>Address</th>
-                      <th>PhoneNumber</th>
-                      <th>Quantity</th>
-                      <th>Proccessed</th>
-                      <th>Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-                    $sql = mysqli_query($dbcon,"SELECT * FROM orders ORDER BY date DESC");
-                    while($row = mysqli_fetch_array($sql)){
-                        echo'
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Pending Stock</h6>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                      <thead>
                         <tr>
-                          <td>'.$row['id'].'</td>
-                          <td>'.$row['customerName'].'</td>
-                          <td>'.$row['address'].'</td>
-                          <td>'.$row['phoneNumber'].'</td>
-                          <td>'.$row['quantity'].' litre(s)</td>
-                          <td>'.($row['processed'] == true ? '
-                            <a href="#" class="btn btn-success btn-icon-split">
-                              <span class="icon text-white-50">
-                                <i class="fas fa-check"></i>
-                              </span>
-                              <span class="text">Order Processed</span>
-                            </a>
-                          ' : '
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                              <span class="icon text-white-50">
-                                <i class="fas fa-times"></i>
-                              </span>
-                              <span class="text">Order Unprocessed</span>
-                            </a>
-                          ').'</td>
-                          <td>'.$row['date'].'</td>
+                          <th>#</th>
+                          <th>distributor Name</th>
+                        
+                          <th>Phone Number</th>
+                          <th>Address</th>
+                  
+                          <th>Quantity</th>
+                          <th>Proccessed</th>
+                          <th>Date</th>
+                          <th>Control</th>
                         </tr>
-                        ';
-                    }
-                    ?>
-                  </tbody>
-                </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                          $user = $_SESSION['dist'];
+                          include('../controllers/connection.php');
+                          $sql = mysqli_query($dbcon,"SELECT * FROM vieworder WHERE processed = false ORDER BY date DESC");
+                          while($row = mysqli_fetch_array($sql)){echo'
+                            <div class="modal fade" id="approveOrder'.$row['id'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Ready to Approve order?</h5>
+                                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">X</span>
+                                  </button>
+                                </div>
+                                <div class="modal-footer">
+                                <form action="../controllers/editDistOrder.php" method="post">
+                                  <input hidden name="id" value="'.$row['id'].'"/>
+                                  <input class="form-control" name="distributor_name" value="'.$row['distributor_name'].'"/>
+                    
+                                  <input class="form-control" name="phone_number" value="'.$row['phone_number'].'"/>
+                                  <input class="form-control" name="Address" value="'.$row['Address'].'"/>
+                                  <input class="form-control" name="quantity" value="'.$row['quantity'].'"/>
+                                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                  <button name="approve" type="submit" class="btn btn-primary" href="">Approve</button>
+                                </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                            ';
+                              echo'
+                              <tr>
+                                <td>'.$row['id'].'</td>
+                                <td>'.$row['distributor_name'].'</td>
+                                <td>'.$row['phone_number'].'</td>
+                                <td>'.$row['Address'].'</td>
+                                <td>'.$row['quantity'].' litre(s)</td>
+                                <td>'.($row['processed'] == true ? '
+                                  <a href="#" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                      <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Order Processed</span>
+                                  </a>
+                                ' : '
+                                  <a href="#" class="btn btn-danger btn-icon-split">
+                                    <span class="icon text-white-50">
+                                      <i class="fas fa-times"></i>
+                                    </span>
+                                    <span class="text">Order Unprocessed</span>
+                                  </a>
+                                ').'</td>
+                                <td>'.$row['date'].'</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target="#approveOrder'.$row['id'].'" class="btn btn-info">
+                                    <span class="icon text-white-50">
+                                      <i class="fas fa-edit"></i>
+                                    </span>
+                                  </a>
+                                </td>
+                              </tr>
+                              ';
+                          }
+                          ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <div style="margin-top: 20px" class="row">
+            <div class="col-md-12">
+              <div class="card shadow mb-12">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Available Stock</h6>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                        
+                          <th>Phone Number</th>
+                          <th>Address</th>
+                  
+                          <th>Quantity</th>
+                          <th>Proccessed</th>
+                          <th>Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                          $user = $_SESSION['dist'];
+                          include('../controllers/connection.php');
+                          $sql = mysqli_query($dbcon,"SELECT * FROM vieworder WHERE processed = true ORDER BY date DESC");
+                          while($row = mysqli_fetch_array($sql)){
+                              echo'
+                              <tr>
+                                <td>'.$row['id'].'</td>
+                                <td>'.$row['distributor_name'].'</td>
+                                <td>'.$row['phone_number'].'</td>
+                                <td>'.$row['Address'].'</td>
+                                <td>'.$row['quantity'].' litre(s)</td>
+                                <td>'.($row['processed'] == true ? '
+                                  <a href="#" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                      <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Order Processed</span>
+                                  </a>
+                                ' : '
+                                  <a href="#" data-toggle="modal" data-target="#approveOrder'.$row['id'].'" class="btn btn-danger btn-icon-split">
+                                    <span class="icon text-white-50">
+                                      <i class="fas fa-times"></i>
+                                    </span>
+                                    <span class="text">Order Unprocessed</span>
+                                  </a>
+                                ').'</td>
+                                <td>'.$row['date'].'</td>
+                              </tr>
+                              ';
+                          }
+                          ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <!-- Content Row -->
-
-          <!-- Content Row -->
-
         </div>
         <!-- /.container-fluid -->
 

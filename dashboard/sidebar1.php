@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-copy"></i>
         </div>
@@ -49,18 +49,18 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="sales.php">
+        <a class="nav-link" href="sales.php?starting=&ending=">
           <i class="fas fa-fw fa-table"></i>
           <span>Sales Report</span></a>
       </li>
       
 
       <!-- Nav Item - Tables -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+      <li class="nav-item">
+        <a class="nav-link" href="stock.php">
           <i class="fas fa-fw fa-table"></i>
-          <span>Stock</span></a>
-      </li> -->
+          <span>Add Stock</span></a>
+      </li>
 
       <!-- Divider -->
       <!-- <hr class="sidebar-divider"> -->

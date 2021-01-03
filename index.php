@@ -44,7 +44,7 @@
   <header id="header" class="fixed-top header-transparent">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.php">Water Distribution App</a></h1>
+      <h1 class="logo mr-auto"><a href="index.php">Water Distribution</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -56,7 +56,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center justify-content-center">
     <div class="container position-relative">
-      <h1>Welcome to Water Distribution App</h1>
+      <h1>Welcome to Water Distribution Information Management System</h1>
       <h2>We are here to ease the water distribution to our clients</h2>
       <a href="#cta" class="btn-get-started scrollto">Get Started</a>
     </div>

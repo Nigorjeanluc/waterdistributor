@@ -8,9 +8,19 @@
 <body bgcolor="#99CC00">
  
 <center>
-<form method="post" action="salam.php">
+<form method="post" action="controllers/salam.php">
 <h2>distributor order<h2>
-                  
+              <?php
+                    $yes=isset($_REQUEST['yes']);
+                    if($yes){
+                        echo'
+						<br />
+                        <div class="alert alert-success alert-dismissable text-center">
+                            <button style="font-size:20px" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5 style="font-size:20px">Your order has been successfully sent.</h5>
+                        </div>';
+                    }
+                ?>
                 </div>
                 <div class="form-group">
 				<h6></h6>
@@ -25,7 +35,7 @@
 				<div class="form-group">
 		
                   <h6>Phone Number:</h6>
-                  <input type="text" class="form-control" name="phone_number:" placeholder="Enter Phone Number here" required />
+                  <input type="text" class="form-control" name="phone_number" placeholder="Enter Phone Number here" required />
                 </div>
 				<div class="form-group">
 				

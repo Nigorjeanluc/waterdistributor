@@ -62,6 +62,30 @@
 
           <!-- Content Row -->
           <div class="row">
+            <div style="margin-bottom: 20px" class="col-md-12">
+              <div class="card shadow mb-12">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Date Picker</h6>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Starting date</label>
+                        <input class="form-control" type="date" name="starting" />
+                      </div>
+                      <div class="col-md-6">
+                        <label>Ending date</label>
+                        <input class="form-control" type="date" name="ending" />
+                      </div>
+                      <div style="margin-top: 10px" class="col-md-12">
+                        <button class="btn btn-md btn-success btn-block">Submit</button>
+                      </div>
+                    </div>
+                  </from>
+                </div>
+              </div>
+            </div>
             <div class="col-md-12">
               <div class="card shadow mb-12">
               <div class="card-header py-3">
@@ -83,7 +107,13 @@
                     </thead>
                     <tbody>
                     <?php
-                      $sql = mysqli_query($dbcon,"SELECT * FROM distributor_sales ORDER BY ID DESC");
+                      if($_GET['starting'] !== '' && $_GET['ending'] !== '') {
+                        $starting = $_GET['starting'];
+                        $ending = $_GET['ending'];
+                        $sql = mysqli_query($dbcon,"SELECT * FROM distributor_sales WHERE date BETWEEN '".$starting."' AND '".$ending."' ORDER BY ID DESC");
+                      } else {
+                        $sql = mysqli_query($dbcon,"SELECT * FROM distributor_sales ORDER BY ID DESC");
+                      }
                       while($row = mysqli_fetch_array($sql)){
                           echo'
                           <tr>
@@ -113,7 +143,13 @@
                     </div>
                     <div class="col-auto">
                     <?php
-                      $sql = mysqli_query($dbcon,"SELECT SUM(amount) FROM distributor_sales");
+                      if($_GET['starting'] !== '' && $_GET['ending'] !== '') {
+                        $starting = $_GET['starting'];
+                        $ending = $_GET['ending'];
+                        $sql = mysqli_query($dbcon,"SELECT SUM(amount) FROM distributor_sales WHERE date BETWEEN '".$starting."' AND '".$ending."'");
+                      } else {
+                        $sql = mysqli_query($dbcon,"SELECT SUM(amount) FROM distributor_sales");
+                      }
                       while($row = mysqli_fetch_array($sql)){
                         echo '<h2>'.$row['SUM(amount)'].' RWF</h2>';
                       }

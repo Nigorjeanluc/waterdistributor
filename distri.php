@@ -61,7 +61,8 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Order now</h2>
           <ol>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.html">Home</a></li>
+			<li><a href="distri.html">distributor order</a></li>
 			
             <li>Ordering Page</li>
           </ol>
@@ -75,7 +76,7 @@
         <div class="row">
           <div class="col-md-4"></div>
           <div class="col-md-4 col-xs-12 col-sm-12">
-              <h2>Order Now</h2>
+              <h2>Distributor's order</h2>
               <?php
                     $yes=isset($_REQUEST['yes']);
                     if($yes){
@@ -87,43 +88,31 @@
                         </div>';
                     }
                 ?>
-              <form action="controllers/ordering.php" method="post" role="form" class="php-email-form">
+              <form action="controllers/salam.php" method="post" role="form" class="php-email-form">
                 <div class="form-group">
-                  <h6>CustomerID:</h6>
+                  <h6>Distributor Name:</h6>
                   <?php
-                    if(isset($_SESSION['user_id'])) {
-                      echo '<input type="text" class="form-control" name="customerID" value="'.$_SESSION['user_id'].'" required/>';
+                    if(isset($_SESSION['dist'])) {
+                      echo '<input type="text" class="form-control" name="distributor_name" value="'.$_SESSION['dist'].'" disabled required/>';
                     } else {
-                      echo '<input type="text" class="form-control" name="customerID" placeholder="Enter customerID here" required />';
-                    }
-                  ?>
-                </div>
-                <div class="form-group">
-                  <h6>Customer Name:</h6>
-                  <?php
-                    if(isset($_SESSION['user'])) {
-                      echo '<input type="text" class="form-control" name="customerName" value="'.$_SESSION['user'].'" required/>';
-                    } else {
-                      echo '<input type="text" class="form-control" name="customerName" placeholder="Enter your name here" required />';
+                      echo '<input type="text" class="form-control" name="distributor_name" placeholder="Enter your name here" required />';
                     }
                   ?>
                 </div>
                 <div class="form-group">
                   <h6>Address:</h6>
-                  <input type="text" class="form-control" name="address" placeholder="Enter Address here" required />
+                  <input type="text" class="form-control" name="Address" placeholder="Enter Address here" required />
                 </div>
                 <div class="form-group">
                   <h6>Phone Number:</h6>
-                  <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number here" required />
+                  <input type="text" class="form-control" name="phone_number" placeholder="Enter Phone Number here" required />
                 </div>
                 <div class="form-group">
                   <h6>Quantity:</h6>
                   <select name="quantity" class="form-control">
+                    <option value="20">20L tap refill</option>
                     <option value="20">20L jerrycan refill</option>
-                    <option value="18.9">18.9L jerrycan refill</option>
-                    <option value="7">7L jerrycan refill</option>
-                    <option value="5">5L jerrycan refill</option>
-                    <option value="1">1L tap refill</option>
+                    <option value="18.9">18.9L tap refill</option>
                   </select>
                 </div>
                 <div class="text-center">
