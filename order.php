@@ -62,6 +62,8 @@
           <h2>Order now</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
+			<li><a href="distri.html">distributor order</a></li>
+			
             <li>Ordering Page</li>
           </ol>
         </div>
