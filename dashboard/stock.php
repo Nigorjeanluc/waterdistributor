@@ -103,7 +103,7 @@
                         <h6>Quantity:</h6>
                         <select name="quantity" class="form-control">
                           <?php
-                            for($i = 1; $i <= 100; $i++) {
+                            for($i = 1; $i <= 1000; $i++) {
                               echo "<option value='$i'>$i litre(s)</option>";
                             }
                           ?>
