@@ -30,8 +30,8 @@
 
         }
         $table = "orders";
-        $destinationArray = "customerID,customerName,address,phoneNumber,quantity,price,discount,processed,date";
-        $sourceArray = stringCopact3($customerId,$customerName,$address).",".stringCopact3($phone,$quantity,$price).",".stringCopact2(0, false);
+        $destinationArray = "customerID,customerName,address,phoneNumber,quantity,price, type,discount,processed,date";
+        $sourceArray = stringCopact3($customerId,$customerName,$address).",".stringCopact3($phone,$quantity,$price).",".stringCopact3($type, 0, false);
         $query = insertDatas($table,$destinationArray,$sourceArray);
         $res = mysqli_query($dbcon,$query);
         if($res){

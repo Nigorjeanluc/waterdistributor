@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2021 at 03:08 PM
+-- Generation Time: Jan 23, 2021 at 11:17 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -136,7 +136,11 @@ INSERT INTO `distributor_sales` (`id`, `customerName`, `address`, `phone`, `quan
 (27, 'My Igor', 'KN232ST', '0783748398', 20, '1200', '2021-01-03 11:09:56'),
 (28, 'Epa', 'KN232ST', '0783748398', 20, '1200', '2021-01-03 11:34:58'),
 (29, 'Isaac', 'Huye', '0783748398', 7, '420', '2021-01-03 12:04:15'),
-(30, 'Ratifat', 'KN232ST', '0783748398', 20, '1200', '2021-01-03 12:08:01');
+(30, 'Ratifat', 'KN232ST', '0783748398', 20, '1200', '2021-01-03 12:08:01'),
+(31, 'Epa', 'Huye', '0783748398', 20, '1200', '2021-01-05 08:32:57'),
+(32, 'Epa', 'KN232ST', '0783748399', 7, '420', '2021-01-05 08:33:48'),
+(33, 'Majajja', 'KN232ST', '0783748398', 20, '1200', '2021-01-23 09:00:39'),
+(34, 'My Igor', 'KN232ST', '0783748398', 76, '68400', '2021-01-23 19:55:42');
 
 -- --------------------------------------------------------
 
@@ -151,6 +155,8 @@ CREATE TABLE `orders` (
   `address` varchar(191) NOT NULL,
   `phoneNumber` varchar(191) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
   `processed` tinyint(1) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -160,23 +166,53 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `customerID`, `customerName`, `address`, `phoneNumber`, `quantity`, `discount`, `processed`, `date`) VALUES
-(1, '1222hgh', 'Namnm', 'ghdhsg', '0789454545', 12, 23, 1, '2020-11-15 10:19:12'),
-(2, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 1, '2020-11-15 11:51:13'),
-(3, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 1, '2020-11-15 11:51:08'),
-(4, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 1, '2020-11-15 11:50:36'),
-(5, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 1, '2020-11-15 11:51:34'),
-(6, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 1, '2020-11-15 11:52:20'),
-(7, '13232hgd', 'fcgvhbmn.,.', 'dfghjbjnkml', '0783748399', 1, 0, 1, '2020-11-15 11:52:28'),
-(8, '', '', 'KN232ST', '0783748398', 17, 0, 1, '2020-11-15 11:52:34'),
-(9, '13232hgd', 'My name', 'KN232ST', '0789660023', 17, 0, 1, '2020-11-15 12:28:32'),
-(10, '13232hgd', 'My Igor', 'KN232ST', '0783748398', 20, 0, 1, '2021-01-03 09:11:50'),
-(11, 'MyID', 'Majajja', 'KN232ST', '0783748399', 19, 0, 1, '2020-11-15 12:29:00'),
-(12, 'MyID', 'My Igor', 'KN232ST', '0783748398', 20, 0, 1, '2021-01-03 11:09:57'),
-(13, '', '', 'KN232ST', '0783748398', 20, 0, 0, '2021-01-03 11:33:30'),
-(14, '1', 'Epa', 'KN232ST', '0783748398', 20, 0, 1, '2021-01-03 11:34:58'),
-(15, '13232hgd', 'Isaac', 'Huye', '0783748398', 7, 0, 1, '2021-01-03 12:04:15'),
-(16, '2', 'Ratifat', 'KN232ST', '0783748398', 20, 0, 1, '2021-01-03 12:08:01');
+INSERT INTO `orders` (`id`, `customerID`, `customerName`, `address`, `phoneNumber`, `quantity`, `price`, `type`, `discount`, `processed`, `date`) VALUES
+(1, '1222hgh', 'Namnm', 'ghdhsg', '0789454545', 12, 0, 0, 23, 1, '2020-11-15 10:19:12'),
+(2, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 0, 0, 1, '2020-11-15 11:51:13'),
+(3, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 0, 0, 1, '2020-11-15 11:51:08'),
+(4, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 0, 0, 1, '2020-11-15 11:50:36'),
+(5, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 0, 0, 1, '2020-11-15 11:51:34'),
+(6, '13232hgd', 'My name', 'KN232ST', '0789660023', 18, 0, 0, 0, 1, '2020-11-15 11:52:20'),
+(7, '13232hgd', 'fcgvhbmn.,.', 'dfghjbjnkml', '0783748399', 1, 0, 0, 0, 1, '2020-11-15 11:52:28'),
+(8, '', '', 'KN232ST', '0783748398', 17, 0, 0, 0, 1, '2020-11-15 11:52:34'),
+(9, '13232hgd', 'My name', 'KN232ST', '0789660023', 17, 0, 0, 0, 1, '2020-11-15 12:28:32'),
+(10, '13232hgd', 'My Igor', 'KN232ST', '0783748398', 20, 0, 0, 0, 1, '2021-01-03 09:11:50'),
+(11, 'MyID', 'Majajja', 'KN232ST', '0783748399', 19, 0, 0, 0, 1, '2020-11-15 12:29:00'),
+(12, 'MyID', 'My Igor', 'KN232ST', '0783748398', 20, 0, 0, 0, 1, '2021-01-03 11:09:57'),
+(13, '', '', 'KN232ST', '0783748398', 20, 0, 0, 0, 0, '2021-01-03 11:33:30'),
+(14, '1', 'Epa', 'KN232ST', '0783748398', 20, 0, 20, 0, 1, '2021-01-23 21:41:56'),
+(15, '13232hgd', 'Isaac', 'Huye', '0783748398', 7, 0, 0, 0, 1, '2021-01-03 12:04:15'),
+(16, '2', 'Ratifat', 'KN232ST', '0783748398', 20, 0, 0, 0, 1, '2021-01-03 12:08:01'),
+(17, '1', 'Epa', 'Huye', '0783748398', 20, 0, 19, 0, 1, '2021-01-23 21:42:25'),
+(18, '1', 'Epa', 'KN232ST', '0783748399', 7, 0, 7, 0, 1, '2021-01-23 21:41:48'),
+(19, '13232hgd', 'Epa', 'KN232ST', '0783748398', 20, 1500, 20, 0, 1, '2021-01-23 22:02:37'),
+(20, '13232hgd', 'Isaac', 'Huye', '0783748398', 14, 0, 0, 0, 0, '2021-01-23 19:42:41'),
+(21, '13232hgd', 'My Igor', 'KN232ST', '0783748398', 76, 900, 20, 0, 1, '2021-01-23 21:41:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `quantity`, `price`, `date`) VALUES
+(1, '20L Jerrycan', 20, 1500, '2021-01-23'),
+(2, '18.9L Bottle', 19, 1700, '2021-01-23'),
+(3, '7L Bottle', 7, 900, '2021-01-23'),
+(4, '5L Jerrycan', 5, 700, '2021-01-23'),
+(5, '1L Aluminium', 1, 2200, '2021-01-23');
 
 -- --------------------------------------------------------
 
@@ -223,7 +259,7 @@ INSERT INTO `vieworder` (`id`, `distributor_name`, `phone_number`, `Address`, `q
 (14, 'Luc', '0787887878', 'KG345ST', 20, 1, '2021-01-03'),
 (15, 'Luc', '0787887878', 'KN677ST', 20, 1, '2021-01-03'),
 (16, 'Luc', '0787887878', 'KN677ST', 12, 1, '2021-01-03'),
-(17, 'Luc', '078999898', 'KN677ST', 1, 0, '2021-01-03');
+(17, 'Luc', '078999898', 'KN677ST', 14, 0, '2021-01-03');
 
 --
 -- Indexes for dumped tables
@@ -257,6 +293,12 @@ ALTER TABLE `distributor_sales`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -297,13 +339,19 @@ ALTER TABLE `distributors`
 -- AUTO_INCREMENT for table `distributor_sales`
 --
 ALTER TABLE `distributor_sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `suppliers`

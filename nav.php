@@ -11,7 +11,8 @@
                 
                     while($row = mysqli_fetch_array($sql)){
                         echo "<li class='list-group-item'>";
-                        switch($row['quantity']) {
+                        echo '<a href="invoice.php?inv='.$row['id'].'">';
+                        switch($row['type']) {
                             case 20:
                                 echo '<img style="width:50px" src="assets/img/20litre.PNG" />';
                                 break;
@@ -30,7 +31,7 @@
                             default:
                                 echo '<img style="width:50px" src="assets/img/20litre.PNG" />';
                         }
-                        echo $row['customerName'].", you have ".$row['quantity']." litres <br />given at ".$row['date']."</li>";
+                        echo $row['customerName'].", you have ".$row['quantity']." litres <br />given at ".$row['date']."</a></li>";
                     }
                 echo '
                     </ul>
