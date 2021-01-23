@@ -7,13 +7,13 @@
         $phone=$_POST['phone'];
         $address=$_POST['address'];
         $quantity=$_POST['quantity'];
-        $amount = $quantity * 60;
+        $price = $_POST['price'];
+        $amount = $quantity * $price;
         $table = 'distributor_sales';
         $destinationArray = "customerName,address,phone,quantity,amount,date";
         $sourceArray = stringCopact3($name,$address,$phone).",".stringCopact2($quantity,$amount);
         $query = insertDatas($table,$destinationArray,$sourceArray);
         $sql = editOne($dbname,'orders', 'processed', true, 'id', $_POST['id']);
-        echo $_POST['id'];
         $res = mysqli_query($dbcon,$query);
         $res2 = mysqli_query($dbcon, $sql);
         if($res && $res2){

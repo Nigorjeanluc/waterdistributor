@@ -119,11 +119,21 @@
                 <div class="form-group">
                   <h6>Quantity:</h6>
                   <select name="quantity" class="form-control">
-                    <option value="20">20L jerrycan refill</option>
-                    <option value="18.9">18.9L jerrycan refill</option>
-                    <option value="7">7L jerrycan refill</option>
-                    <option value="5">5L jerrycan refill</option>
-                    <option value="1">1L tap refill</option>
+                    <?php
+                      for($i = 1; $i <= 100; $i++) {
+                        echo "<option value='$i'>$i item(s)</option>";
+                      }
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <h6>Type:</h6>
+                  <select name="type" class="form-control">
+                    <option value="20">20L jerrycan refill for 1500 RWF</option>
+                    <option value="19">18.9L bottle refill for 1700 RWF</option>
+                    <option value="7">7L bottle refill for 900 RWF</option>
+                    <option value="5">5L jerrycan refill for 700 RWF</option>
+                    <option value="1">1L aliminium for 2200 RWF</option>
                   </select>
                 </div>
                 <div class="text-center">
