@@ -104,10 +104,21 @@
                         <select name="quantity" class="form-control">
                           <?php
                             for($i = 1; $i <= 1000; $i++) {
-                              echo "<option value='$i'>$i litre(s)</option>";
+                              echo "<option value='$i'>$i item(s)</option>";
                             }
                           ?>
                         </select>
+                    </div>
+                    <div class="form-group">
+                      <h6>Type:</h6>
+                      <select name="type" class="form-control">
+                      <?php
+                        $sql = mysqli_query($dbcon,"SELECT * FROM products ORDER BY date DESC");
+                        while($row = mysqli_fetch_array($sql)){
+                          echo '<option value="'.$row['quantity'].'">'.$row['name'].' refill for '.$row['price'].' RWF</option>';
+                        }
+                      ?>
+                      </select>
                     </div>
                     <div class="text-center">
                           <button class="btn btn-md" name="orders" type="submit">Submit</button>
@@ -133,6 +144,7 @@
                           <th>Address</th>
                   
                           <th>Quantity</th>
+                          <th>Price</th>
                           <th>Proccessed</th>
                           <th>Date</th>
                           <th>Control</th>
@@ -175,7 +187,8 @@
                                 <td>'.$row['distributor_name'].'</td>
                                 <td>'.$row['phone_number'].'</td>
                                 <td>'.$row['Address'].'</td>
-                                <td>'.$row['quantity'].' litre(s)</td>
+                                <td>'.$row['quantity'].' item(s)</td>
+                                <th></td>
                                 <td>'.($row['processed'] == true ? '
                                   <a href="#" class="btn btn-success btn-icon-split">
                                     <span class="icon text-white-50">
