@@ -79,6 +79,7 @@
 					    <th>Address</th>
               
                       <th>Quantity</th>
+                      <th>Price</th>
                       <th>Proccessed</th>
                       <th>Date</th>
                     </tr>
@@ -106,6 +107,8 @@
                               <input hidden name="phone_number" value="'.$row['phone_number'].'"/>
                               <input hidden name="Address" value="'.$row['Address'].'"/>
                               <input hidden name="quantity" value="'.$row['quantity'].'"/>
+                              <input hidden name="price" value="'.$row['price'].'"/>
+                              <input hidden name="type" value="'.$row['type'].'"/>
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                               <button name="approve" type="submit" class="btn btn-primary" href="">Approve</button>
                             </form>
@@ -120,7 +123,8 @@
                           <td>'.$row['distributor_name'].'</td>
                           <td>'.$row['phone_number'].'</td>
                           <td>'.$row['Address'].'</td>
-                          <td>'.$row['quantity'].' litre(s)</td>
+                          <td>'.$row['quantity'].' item(s)</td>
+                          <td>'.$row['price'].' RWF</td>
                           <td>'.($row['processed'] == true ? '
                             <a href="#" class="btn btn-success btn-icon-split">
                               <span class="icon text-white-50">

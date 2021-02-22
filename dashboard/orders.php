@@ -60,6 +60,54 @@
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
+          <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <?php
+              $sql = mysqli_query($dbcon,"SELECT * FROM stock ORDER BY date DESC");
+              while($row = mysqli_fetch_array($sql)){
+                $id = $row['product_id'];
+                $query= mysqli_query($dbcon, "SELECT * FROM products WHERE id='$id'");
+                while($row2 = mysqli_fetch_array($query)){
+                  echo '
+                  <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">'.$row2['name'].'</div>
+                            <div class="h5 mb-0">'.$row['amount'].' item(s)</div>
+                          </div>
+                          <div class="col-auto">';
+                  switch($row2['id']) {
+                    case 1:
+                      echo '<img style="height: 60px;" src="img/20litre.PNG" alt="...">';
+                      break;
+                    case 2:
+                      echo '<img style="height: 60px;" src="img/18-9Litre-nobackground.png" alt="...">';
+                      break;
+                    case 3:
+                      echo '<img style="height: 60px;" src="img/7litres.PNG" alt="...">';
+                      break;
+                    case 4:
+                      echo '<img style="height: 60px;" src="img/5litre.PNG" alt="...">';
+                      break;
+                    case 5:
+                      echo '<img style="height: 60px;" src="img/litre.PNG" alt="...">';
+                      break;
+                    default:
+                      echo '<img style="height: 60px;" src="../img/20litre.PNG" alt="...">';
+                  }   
+                  echo'    </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  ';
+                }
+              }
+            ?>
+          </div>
+
           <!-- Content Row -->
           <div class="row">
             <div class="col-md-12">
@@ -100,6 +148,7 @@
                             <div class="modal-footer">
                             <form action="../controllers/approveOrder.php" method="post">
                               <input hidden name="id" value="'.$row['id'].'"/>
+                              <input hidden name="product_id" value="'.$row['product_id'].'"/>
                               <input hidden name="customerName" value="'.$row['customerName'].'"/>
                               <input hidden name="phone" value="'.$row['phoneNumber'].'"/>
                               <input hidden name="address" value="'.$row['address'].'"/>

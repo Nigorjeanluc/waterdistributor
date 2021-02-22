@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Login - Water Distribution</title>
+  <title>Register - Water Distribution</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -59,10 +59,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Login Here</h2>
+          <h2>Register Here</h2>
           <ol>
             <li><a href="index.php">Home</a></li>
-            <li>Login Page</li>
+            <li>Register Page</li>
           </ol>
         </div>
 
@@ -79,7 +79,7 @@
                   if($yes){
                   echo'
                   <div align="center" class="box">
-                    <p>Wrong username or password, retry again or return <a href="index.php">Home</a>.</p>
+                    <p>Your password does not match.</p>
                   </div>
                   ';
                   }
@@ -89,29 +89,41 @@
                   unset($_SESSION['user_id']);
                   unset($_SESSION['user_phone']);
                   unset($_SESSION['user_address']);
-                  // echo'
-                  // <div align="center" class="box">
-                  //     <p>Thanks for your participation login again or return <a href="index.php">Home</a>.</p>
-                  // </div>
-                  // ';
+                  echo'
+                  <div align="center" class="box">
+                      <p>Registration Failed.</p>
+                  </div>
+                  ';
                 }
               ?>
-              <h2>User Login</h2>
-              <form action="controllers/loginUser.php" method="post" role="form" class="php-email-form">
+              <h2>Register here</h2>
+              <form action="controllers/registerUser.php" method="post" role="form" class="php-email-form">
                 <div class="form-group">
-                  <h6>Username:</h6>
-                  <input type="text" class="form-control" name="name" id="username" placeholder="Enter username here" required/>
+                  <h6>Fullname:</h6>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter fullname here" required/>
+                </div>
+                <div class="form-group">
+                  <h6>Phone number:</h6>
+                  <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter phone number here" required/>
+                </div>
+                <div class="form-group">
+                  <h6>Address:</h6>
+                  <input type="text" class="form-control" name="address" id="address" placeholder="Enter address here" required/>
                 </div>
                 <div class="form-group">
                   <h6>Password:</h6>
                   <input type="password" class="form-control" name="password" placeholder="Enter password here" required/>
+                </div>
+                <div class="form-group">
+                  <h6>Confirm password:</h6>
+                  <input type="password" class="form-control" name="confirm-password" placeholder="Enter password here" required/>
                 </div>
                 <div class="text-center">
                     <button class="login-btn" name="submit" type="submit">Submit</button>
                 </div>
               </form>
               <div style="padding-top: 20px" class="text-center">
-                <p>Don't have an account? Register <a href="register.php">here</a></p>
+                <p>Already has an account? Login <a href="login.php">here</a></p>
               </div>
           </div>
           <div class="col-md-4"></div>

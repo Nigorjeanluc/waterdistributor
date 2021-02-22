@@ -10,19 +10,19 @@
         $quantity = $_POST['quantity'];
         $type=$_POST['type'];
         switch ($type) {
-            case 20:
+            case 1:
                 $price = 1500;
                 break;
-            case 19:
+            case 2:
                 $price = 1700;
                 break;
-            case 7:
+            case 3:
                 $price = 900;
                 break;
-            case 5:
+            case 4:
                 $price = 700;
                 break;
-            case 1:
+            case 5:
                 $price = 2200;
                 break;
             default:
@@ -30,8 +30,8 @@
 
         }
         $table = "orders";
-        $destinationArray = "customerID,customerName,address,phoneNumber,quantity,price, type,discount,processed,date";
-        $sourceArray = stringCopact3($customerId,$customerName,$address).",".stringCopact3($phone,$quantity,$price).",".stringCopact3($type, 0, false);
+        $destinationArray = "customerID,customerName,address,phoneNumber,quantity, product_id,price, type,discount,processed,date";
+        $sourceArray = stringCopact3($customerId,$customerName,$address).",".stringCopact2($phone,$quantity).",".stringCopact2($type, $price).",".stringCopact3($type, 0, false);
         $query = insertDatas($table,$destinationArray,$sourceArray);
         $res = mysqli_query($dbcon,$query);
         if($res){

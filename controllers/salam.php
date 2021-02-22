@@ -9,20 +9,20 @@
         $quantity=$_POST['quantity'];
         $type=$_POST['type'];
         switch ($type) {
-            case 20:
-                $price = 1500;
+            case 1:
+                $price = 1500 * $quantity;
                 break;
-            case 19:
-                $price = 1700;
+            case 2:
+                $price = 1700 * $quantity;
                 break;
-            case 7:
-                $price = 900;
+            case 3:
+                $price = 900 * $quantity;
+                break;
+            case 4:
+                $price = 700 * $quantity;
                 break;
             case 5:
-                $price = 700;
-                break;
-            case 1:
-                $price = 2200;
+                $price = 2200 * $quantity;
                 break;
             default:
                 $price = 0;

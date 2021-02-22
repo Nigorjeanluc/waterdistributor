@@ -111,21 +111,27 @@
                 </div>
                 <div class="form-group">
                   <h6>Address:</h6>
-                  <input type="text" class="form-control" name="address" placeholder="Enter Address here" required />
+                  <?php
+                    if(isset($_SESSION['user_address'])) {
+                      echo '<input type="text" class="form-control" name="address" value="'.$_SESSION['user_address'].'" required/>';
+                    } else {
+                      echo '<input type="text" class="form-control" name="address" placeholder="Enter Address here" required />';
+                    }
+                  ?>
                 </div>
                 <div class="form-group">
                   <h6>Phone Number:</h6>
-                  <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number here" required />
+                  <?php
+                    if(isset($_SESSION['user_phone'])) {
+                      echo '<input type="text" class="form-control" name="phone" value="'.$_SESSION['user_phone'].'" required/>';
+                    } else {
+                      echo '<input type="text" class="form-control" name="phone" placeholder="Enter Phone Number here" required />';
+                    }
+                  ?>
                 </div>
                 <div class="form-group">
-                  <h6>Quantity:</h6>
-                  <select name="quantity" class="form-control">
-                    <?php
-                      for($i = 1; $i <= 100; $i++) {
-                        echo "<option value='$i'>$i item(s)</option>";
-                      }
-                    ?>
-                  </select>
+                  <h6>Quantity (items):</h6>
+                  <input type="text" class="form-control" name="quantity" placeholder="Enter the number of items" required/>
                 </div>
                 <div class="form-group">
                   <h6>Type:</h6>
@@ -133,7 +139,7 @@
                   <?php
                     $sql = mysqli_query($dbcon,"SELECT * FROM products ORDER BY date DESC");
                     while($row = mysqli_fetch_array($sql)){
-                      echo '<option value="'.$row['quantity'].'">'.$row['name'].' refill for '.$row['price'].' RWF</option>';
+                      echo '<option value="'.$row['id'].'">'.$row['name'].' refill for '.$row['price'].' RWF</option>';
                     }
                   ?>
                   </select>

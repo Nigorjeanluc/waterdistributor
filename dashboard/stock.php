@@ -59,6 +59,54 @@
             <h1 class="h3 mb-0 text-gray-800">Stock</h1>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
+          
+          <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <?php
+              $sql = mysqli_query($dbcon,"SELECT * FROM stock ORDER BY date DESC");
+              while($row = mysqli_fetch_array($sql)){
+                $id = $row['product_id'];
+                $query= mysqli_query($dbcon, "SELECT * FROM products WHERE id='$id'");
+                while($row2 = mysqli_fetch_array($query)){
+                  echo '
+                  <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">'.$row2['name'].'</div>
+                            <div class="h5 mb-0">'.$row['amount'].' item(s)</div>
+                          </div>
+                          <div class="col-auto">';
+                  switch($row2['id']) {
+                    case 1:
+                      echo '<img style="height: 60px;" src="img/20litre.PNG" alt="...">';
+                      break;
+                    case 2:
+                      echo '<img style="height: 60px;" src="img/18-9Litre-nobackground.png" alt="...">';
+                      break;
+                    case 3:
+                      echo '<img style="height: 60px;" src="img/7litres.PNG" alt="...">';
+                      break;
+                    case 4:
+                      echo '<img style="height: 60px;" src="img/5litre.PNG" alt="...">';
+                      break;
+                    case 5:
+                      echo '<img style="height: 60px;" src="img/litre.PNG" alt="...">';
+                      break;
+                    default:
+                      echo '<img style="height: 60px;" src="../img/20litre.PNG" alt="...">';
+                  }   
+                  echo'    </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  ';
+                }
+              }
+            ?>
+          </div>
 
           <!-- Content Row -->
           <div class="row">
@@ -100,14 +148,8 @@
                       <input type="text" class="form-control" name="phone_number" placeholder="Enter Phone Number here" required />
                     </div>
                     <div class="form-group">
-                        <h6>Quantity:</h6>
-                        <select name="quantity" class="form-control">
-                          <?php
-                            for($i = 1; $i <= 1000; $i++) {
-                              echo "<option value='$i'>$i item(s)</option>";
-                            }
-                          ?>
-                        </select>
+                        <h6>Quantity(items):</h6>
+                        <input type="text" class="form-control" name="quantity" placeholder="Enter the amount of items" required />
                     </div>
                     <div class="form-group">
                       <h6>Type:</h6>
@@ -115,7 +157,7 @@
                       <?php
                         $sql = mysqli_query($dbcon,"SELECT * FROM products ORDER BY date DESC");
                         while($row = mysqli_fetch_array($sql)){
-                          echo '<option value="'.$row['quantity'].'">'.$row['name'].' refill for '.$row['price'].' RWF</option>';
+                          echo '<option value="'.$row['id'].'">'.$row['name'].' refill for '.$row['price'].' RWF</option>';
                         }
                       ?>
                       </select>
@@ -188,7 +230,7 @@
                                 <td>'.$row['phone_number'].'</td>
                                 <td>'.$row['Address'].'</td>
                                 <td>'.$row['quantity'].' item(s)</td>
-                                <th></td>
+                                <td>'.$row['price'].' RWF</td>
                                 <td>'.($row['processed'] == true ? '
                                   <a href="#" class="btn btn-success btn-icon-split">
                                     <span class="icon text-white-50">
